@@ -1,0 +1,8 @@
+{
+  "name": "meadowlark",
+  "version": "1.0.0",
+  "description": "3강 예제",
+  "main": "meadowlark.js",
+  "author": "kyu0",
+  "license": "MIT"
+}

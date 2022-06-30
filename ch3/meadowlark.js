@@ -2,6 +2,14 @@ const express = require('express')
 const expressHandlebars = require('express-handlebars')
 const app = express()
 
+const fortunes = [
+    "Conquer your fears or they will conquer you.",
+    "Rivers need springs.",
+    "Do not fear what you don't know.",
+    "You will have a peasant surprise.",
+    "Whenever possible, keep it simple."
+]
+
 // Handlebars 뷰 엔진 설정
 app.engine('handlebars', expressHandlebars.engine({
     defaultLayout: 'main',
@@ -17,7 +25,8 @@ app.get('/', (req, res) => {
 })
 
 app.get('/about', (req, res) => {
-    res.render('about')
+    const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)]
+    res.render('about', { fortune: randomFortune })
 })
 
 // 404 Page

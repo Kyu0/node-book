@@ -1,7 +1,6 @@
 const handlers = require('./lib/handlers')
 const express = require('express')
 const expressHandlebars = require('express-handlebars')
-const fortune = require('./lib/fortune')
 const app = express()
 
 // Handlebars 뷰 엔진 설정

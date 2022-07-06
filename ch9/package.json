@@ -1,0 +1,25 @@
+{
+  "name": "meadowlark",
+  "version": "1.0.0",
+  "description": "7강 예제",
+  "main": "meadowlark.js",
+  "author": "kyu0",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "bootstrap": "^5.2.0-beta1",
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
+    "multiparty": "^4.2.3",
+    "puppeteer": "^1.20.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.19.0",
+    "eslint-config-google": "^0.14.0",
+    "jest": "^25.5.4"
+  },
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint meadowlark.js lib"
+  }
+}

@@ -1,10 +1,12 @@
 const handlers = require('./lib/handlers')
 const weatherMiddleware = require('./lib/middleware/weather')
+const credentials = require('./.credentials.development')
 
 const express = require('express')
 const expressHandlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
 const multiparty = require('multiparty')
+const cookieParser = require('cookie-parser')
 const app = express()
 
 // Handlebars 뷰 엔진 설정
@@ -27,6 +29,7 @@ app.use(express.static(__dirname + '/public'))
 
 app.use(weatherMiddleware)
 app.use(bodyParser.json())
+app.use(cookieParser(credentials.cookieSecret))
 
 app.get('/', handlers.home)
 

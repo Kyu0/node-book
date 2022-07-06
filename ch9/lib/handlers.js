@@ -1,6 +1,10 @@
 const fortune = require('./fortune')
 
-exports.home = (req, res) => res.render('home')
+exports.home = (req, res) => {
+    res.cookie('monster', 'nom nom')
+    res.cookie('signed_monster', 'nom nom', { signed: true })
+    res.render('home')
+}
 
 exports.about = (req, res) => res.render('about', { fortune: fortune.getFortune() })
 

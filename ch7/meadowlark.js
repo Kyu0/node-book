@@ -31,6 +31,10 @@ app.get('/about', handlers.about)
 
 app.get('/section-test', handlers.sectionTest)
 
+app.get('/newsletter-signup', handlers.newsletterSignup)
+app.post('/newsletter-signup/process', handlers.newsletterSignupProcess)
+app.get('/newsletter-signup/thank-you', handlers.newsletterSignupThankyou)
+
 app.use(handlers.notFound)
 
 app.use(handlers.serverError)

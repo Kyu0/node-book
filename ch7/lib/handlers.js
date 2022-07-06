@@ -9,6 +9,17 @@ exports.sectionTest = (req, res) => res.render('section-test')
 exports.newsletter = (req, res) => {
     res.render('newsletter', { csrf: 'CSRF token goes here' })
 }
+
+exports.vacationPhotoContest = (req, res) => {
+    res.render('contest/vacation-photo', { csrf: 'CSRF token goes here' })
+}
+
+exports.vacationPhotoContestProcess = (req, res, fields, files) => {
+    console.log('field data: ', fields)
+    console.log('files: ', files)
+    res.redirect(303, '/contest/vacation-photo-thank-you')
+}
+
 exports.api = {
     newsletterSignup: (req, res) => {
         console.log(`CSRF token (from hidden form field): ${req.body._csrf}`)

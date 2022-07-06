@@ -4,6 +4,7 @@ const weatherMiddleware = require('./lib/middleware/weather')
 const express = require('express')
 const expressHandlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
+const multiparty = require('multiparty')
 const app = express()
 
 // Handlebars 뷰 엔진 설정
@@ -35,6 +36,15 @@ app.get('/section-test', handlers.sectionTest)
 
 app.get('/newsletter', handlers.newsletter)
 app.post('/api/newsletter-signup', handlers.api.newsletterSignup)
+
+app.get('/contest/vacation-photo', handlers.vacationPhotoContest)
+app.post('/contest/vacation-photo/:year/:month', (req, res) => {
+    const form = new multiparty.Form()
+    form.parse(req, (err, fields, files) => {
+        if (err) return res.status(500).send({ error: err.messge })
+        handlers.vacationPhotoContestProcess(req, res, fields, files)
+    })
+})
 
 app.use(handlers.notFound)
 

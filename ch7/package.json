@@ -1,0 +1,12 @@
+{
+  "name": "meadowlark",
+  "version": "1.0.0",
+  "description": "7강 예제",
+  "main": "meadowlark.js",
+  "author": "kyu0",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6"
+  }
+}

@@ -3,6 +3,7 @@ const weatherMiddleware = require('./lib/middleware/weather')
 
 const express = require('express')
 const expressHandlebars = require('express-handlebars')
+const bodyParser = require('body-parser')
 const app = express()
 
 // Handlebars 뷰 엔진 설정
@@ -24,6 +25,7 @@ const port = process.env.PORT || 3000
 app.use(express.static(__dirname + '/public'))
 
 app.use(weatherMiddleware)
+app.use(bodyParser.json())
 
 app.get('/', handlers.home)
 
@@ -31,9 +33,8 @@ app.get('/about', handlers.about)
 
 app.get('/section-test', handlers.sectionTest)
 
-app.get('/newsletter-signup', handlers.newsletterSignup)
-app.post('/newsletter-signup/process', handlers.newsletterSignupProcess)
-app.get('/newsletter-signup/thank-you', handlers.newsletterSignupThankyou)
+app.get('/newsletter', handlers.newsletter)
+app.post('/api/newsletter-signup', handlers.api.newsletterSignup)
 
 app.use(handlers.notFound)
 

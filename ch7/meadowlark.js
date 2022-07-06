@@ -6,7 +6,15 @@ const app = express()
 // Handlebars 뷰 엔진 설정
 app.engine('handlebars', expressHandlebars.engine({
     defaultLayout: 'main',
+    helpers: {
+        section: function(name, options) {
+            if(!this._sections) this._sections = {}
+            this._sections[name] = options.fn(this)
+            return null
+        },
+    },
 }))
+
 app.set('view engine', 'handlebars')
 
 const port = process.env.PORT || 3000
@@ -16,6 +24,8 @@ app.use(express.static(__dirname + '/public'))
 app.get('/', handlers.home)
 
 app.get('/about', handlers.about)
+
+app.get('/section-test', handlers.sectionTest)
 
 app.use(handlers.notFound)
 
